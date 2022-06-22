@@ -4,6 +4,9 @@ name: Ansible Commit
 on: 
   pull_request: 
 
+env:
+  ACTIONS_ALLOW_UNSECURE_COMMANDS: "1"
+
 jobs:
   lint:
     runs-on: ubuntu-latest
