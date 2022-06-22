@@ -1,0 +1,16 @@
+---
+
+- name: Verify
+  hosts: all
+
+  tasks:
+  
+    - name: Check nfsstat is installed
+      command: "nfsstat --version"
+      ignore_errors: true
+      register: current_version
+
+    - name: Ensure nfsstat is not installed
+      assert:
+        that:
+          - current_version.rc != 0
