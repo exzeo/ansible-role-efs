@@ -4,9 +4,6 @@ name: Ansible Commit
 on: 
   pull_request: 
 
-env:
-  ACTIONS_ALLOW_UNSECURE_COMMANDS: "1"
-
 jobs:
   lint:
     runs-on: ubuntu-latest
@@ -53,6 +50,9 @@ jobs:
           export DISTRO_NAME=${DISTRO_IMAGE/:/-}
           echo "::set-env name=DISTRO_IMAGE::$DISTRO_IMAGE"
           echo "::set-env name=DISTRO_NAME::$DISTRO_NAME"
+        with:
+          ACTIONS_ALLOW_UNSECURE_COMMANDS: true
+
 
       - name: Set up Python 3.
         uses: actions/setup-python@v2
