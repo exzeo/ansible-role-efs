@@ -27,6 +27,10 @@ jobs:
 
   molecule:
     runs-on: ubuntu-latest
+    
+    env:
+      ACTIONS_ALLOW_UNSECURE_COMMANDS: true
+
     strategy:
       matrix:
         distro:
@@ -50,9 +54,6 @@ jobs:
           export DISTRO_NAME=${DISTRO_IMAGE/:/-}
           echo "::set-env name=DISTRO_IMAGE::$DISTRO_IMAGE"
           echo "::set-env name=DISTRO_NAME::$DISTRO_NAME"
-        with:
-          ACTIONS_ALLOW_UNSECURE_COMMANDS: true
-
 
       - name: Set up Python 3.
         uses: actions/setup-python@v2
